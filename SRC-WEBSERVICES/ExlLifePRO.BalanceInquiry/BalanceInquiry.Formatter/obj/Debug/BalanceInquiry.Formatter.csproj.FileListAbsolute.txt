@@ -1,0 +1,4 @@
+C:\ServiceLayer_Project\EXlLifePROServiceLayer_Base\V18\ExlLifePRO.BalanceInquiry\BalanceInquiry.Formatter\bin\Debug\BalanceInquiry.Formatter.dll
+C:\ServiceLayer_Project\EXlLifePROServiceLayer_Base\V18\ExlLifePRO.BalanceInquiry\BalanceInquiry.Formatter\bin\Debug\BalanceInquiry.Formatter.pdb
+C:\ServiceLayer_Project\EXlLifePROServiceLayer_Base\V18\ExlLifePRO.BalanceInquiry\BalanceInquiry.Formatter\obj\Debug\BalanceInquiry.Formatter.dll
+C:\ServiceLayer_Project\EXlLifePROServiceLayer_Base\V18\ExlLifePRO.BalanceInquiry\BalanceInquiry.Formatter\obj\Debug\BalanceInquiry.Formatter.pdb

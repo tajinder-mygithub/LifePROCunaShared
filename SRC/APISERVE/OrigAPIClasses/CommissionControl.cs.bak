@@ -1,0 +1,180 @@
+/*@******************************************************/
+/*@** */
+/*@** Licensed Materials - Property of*/
+/*@** Professional Data Management Again, Inc.*/
+/*@** (C)Copyright Professional Data Management Again,*/
+/*@** Inc.  1983 - 2006. */
+/*@** */
+/*@** All Rights Reserved.  Contains confidential and*/
+/*@** trade secret information. Copyright notice is*/
+/*@** precautionary only and does not imply publication.*/
+/*@** */
+/*@******************************************************/
+
+/*
+*  SR#              INIT   DATE        DESCRIPTION
+*  -----------------------------------------------------------------------
+*  20130226-004-01   DAR   03/18/13    Initial implementation  
+*/
+
+
+using System;
+using LPNETAPI ; 
+using System.Runtime.Remoting.Lifetime;
+
+namespace PDMA.LifePro 
+{
+	/// <summary>
+	/// Summary description for CommissionControl.
+	/// </summary>
+
+	public class CommissionControl : MarshalByRefObject, ICommissionControl  
+	{
+		OCOMCTRL apiComm ; 
+
+		public static OAPPLICA apiApp ; 
+		public string UserType ;
+
+        private int agentMax = 10;  // There can be no more than 10 agents per split record.  
+
+
+		public CommissionControl(string userType, out OutputBase outProps)
+		{
+			UserType = userType ; 
+			apiComm = new OCOMCTRL(apiApp, UserType);  
+
+			outProps = new OutputBase() ; 
+			outProps.ReturnCode = apiComm.getReturnCode() ; 
+			outProps.ErrorMessage = apiComm.getErrorMessage() ; 
+
+		}
+
+		public void Dispose() 
+		{
+			apiComm.Dispose(); 
+			apiComm = null ; 
+		}
+
+		public CommissionControlOutput RetrieveCommissionSplits (CommissionControlInput inProps ) 
+		{
+
+			apiComm.setCompanyCode(inProps.CompanyCode); 
+			apiComm.setPolicyNumber(inProps.PolicyNumber);
+            apiComm.setSplitControl(inProps.SplitControl);
+            apiComm.setIssueDate(inProps.IssueDate);
+            apiComm.setEffectiveDate(inProps.EffectiveDate);
+           
+            apiComm.RetrieveCommissionSplits(); 
+
+			CommissionControlOutput outProps = new CommissionControlOutput() ; 
+			outProps.ReturnCode = apiComm.getReturnCode();  
+			outProps.ErrorMessage = apiComm.getErrorMessage();
+
+
+            if (outProps.ReturnCode == 0)
+            {
+
+                int count = apiComm.getOutLastSplitEntry();  
+                outProps.SplitControl = new short[count];
+                outProps.IssueDate = new int[count];
+                outProps.EffectiveDate = new int[count];
+                outProps.EndDate = new int[count];
+                outProps.RateOverrideFlag = new string[count];
+                outProps.ReferralFlag = new string[count];
+                outProps.ProdCrFlag = new string[count];
+                outProps.AttainedAge = new short[count];
+                outProps.PremiumIncrease = new string[count];
+                outProps.OverrideFlag = new string[count];   
+                outProps.CoderId = new string[count]; 
+
+                outProps.AgentNumber = new string[count,agentMax]; 
+                outProps.CommissionPercent = new double[count,agentMax]; 
+                outProps.ProductionPercent = new double[count, agentMax]; 
+                outProps.ServiceAgentIndicator = new string[count, agentMax]; 
+                outProps.MarketCode = new string[count, agentMax]; 
+                outProps.AgentLevel = new string[count, agentMax];
+
+                for (int i = 0; i < outProps.SplitControl.Length;i++)
+                {
+
+                    outProps.SplitControl[i] = apiComm.getOutSplitControl(i + 1);
+                    outProps.IssueDate[i] = apiComm.getOutIssueDate(i + 1);
+                    outProps.EffectiveDate[i] = apiComm.getOutEffectiveDate(i + 1);
+                    outProps.EndDate[i] = apiComm.getOutEndDate(i + 1);
+                    outProps.RateOverrideFlag[i] = apiComm.getOutRateOverrideFlag(i + 1);
+                    outProps.ReferralFlag[i] = apiComm.getOutReferralFlag(i + 1);
+                    outProps.ProdCrFlag[i] = apiComm.getOutProdCrFlag(i + 1);
+                    outProps.AttainedAge[i] = apiComm.getOutAttainedAge(i + 1);
+                    outProps.PremiumIncrease[i] = apiComm.getOutPremiumIncrease(i + 1);
+                    outProps.OverrideFlag[i] = apiComm.getOutOverrideFlag(i + 1); 
+                    outProps.CoderId[i] = apiComm.getOutCoderId(i + 1);
+
+
+                    for (int x = 0; x < agentMax; x++)
+                    {
+                        outProps.AgentNumber[i, x] = apiComm.getOutAgent(i + 1, x + 1);
+                        outProps.CommissionPercent[i, x] = apiComm.getOutCommPcnt(i + 1, x + 1);
+                        outProps.ProductionPercent[i, x] = apiComm.getOutProdPcnt(i + 1, x + 1);
+                        outProps.ServiceAgentIndicator[i, x] = apiComm.getOutServiceAgentInd(i + 1, x + 1);
+                        outProps.MarketCode[i, x] = apiComm.getOutMarketCode(i + 1, x + 1);
+                        outProps.AgentLevel[i, x] = apiComm.getOutAgentLevel(i + 1, x + 1);
+
+                    }
+
+                }
+            }
+
+			
+			return outProps ; 
+		}
+
+
+        public OutputBase AddNewCommissionSplit(CommissionControlInput inProps)
+        {
+
+            apiComm.setCompanyCode(inProps.CompanyCode);
+            apiComm.setPolicyNumber(inProps.PolicyNumber);
+            apiComm.setSplitControl(inProps.SplitControl);
+            apiComm.setIssueDate(inProps.IssueDate);
+            apiComm.setEffectiveDate(inProps.EffectiveDate);
+            apiComm.setUpdateRelationshipsFlag( inProps.UpdateRelationships  ? "Y" : "F");
+            apiComm.setAddRateOverrideFlag(inProps.RateOverrideFlag);
+            apiComm.setAddReferralFlag(inProps.ReferralFlag);
+            apiComm.setAddProdCrFlag(inProps.ProdCrFlag);
+            apiComm.setAddAttainedAge(inProps.AttainedAge);
+            apiComm.setAddPremiumIncrease(inProps.PremiumIncrease);
+            apiComm.setAddOverrideFlag(inProps.OverrideFlag); 
+
+            for (int i = 0; i < inProps.AgentNumber.Length; i++)
+            {
+                apiComm.setAddAgent(i + 1, inProps.AgentNumber[i]);
+                apiComm.setAddCommPcnt(i + 1, inProps.CommissionPercent[i]);
+                apiComm.setAddProdPcnt(i + 1, inProps.ProductionPercent[i]);
+                apiComm.setAddServiceAgentInd(i + 1, inProps.ServiceAgentIndicator[i]);
+                apiComm.setAddMarketCode(i + 1, inProps.MarketCode[i]);
+                apiComm.setAddAgentLevel(i + 1, inProps.AgentLevel[i]);   
+            }
+
+            apiComm.AddNewCommissionSplit(); 
+
+            OutputBase outProps = new OutputBase();
+
+            outProps.ReturnCode = apiComm.getReturnCode();
+            outProps.ErrorMessage = apiComm.getErrorMessage();   
+
+            return outProps; 
+
+        }
+
+
+		// Manage the lifetime of this object so that it never expires on its own.
+		public override object InitializeLifetimeService() {
+			ILease lease = (ILease)base.InitializeLifetimeService();
+			if(lease.CurrentState == LeaseState.Initial) {
+				lease.InitialLeaseTime = TimeSpan.Zero;
+			}
+			return lease;
+		}
+	
+	}
+}

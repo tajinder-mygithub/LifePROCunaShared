@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="f07cec21-06cb-489e-831d-0be079cc640a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExlLifeProService.xsd" MetadataType="Schema" ID="3bebc0e2-b31c-4a47-a6e8-aa62bb22bb41" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ExlLifeProService.disco" MetadataType="Disco" ID="71107e35-f7e8-4259-97b9-b267bcea7fe2" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?disco" />
+    <MetadataFile FileName="ExlLifeProService1.xsd" MetadataType="Schema" ID="4e4a1c10-fea8-4335-9954-cbdf956d9c21" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ExlLifeProService.wsdl" MetadataType="Wsdl" ID="88f2aba7-304a-4ee8-b794-4c3309b5c5c3" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?wsdl" />
+    <MetadataFile FileName="ExlLifeProService1.wsdl" MetadataType="Wsdl" ID="1305567b-5b86-4827-a3b4-5dbf8d83e124" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?wsdl=wsdl0" />
+    <MetadataFile FileName="ExlLifeProService2.xsd" MetadataType="Schema" ID="d00e4abf-78a9-4a45-b5f9-9ce8ab23a0e4" SourceId="1" SourceUrl="http://indyweb1:2020/ExlLifePROServiceBase18/ExlLifeProService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

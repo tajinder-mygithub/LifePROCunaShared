@@ -1,0 +1,868 @@
+/*@*****************************************************
+/*@** 
+/*@** Licensed Materials - Property of
+/*@** ExlService Holdings, Inc.
+/*@**  
+/*@** (C) 1983-2013 ExlService Holdings, Inc.  All Rights Reserved.
+/*@** 
+/*@** Contains confidential and trade secret information.  
+/*@** Copyright notice is precautionary only and does not
+/*@** imply publication.
+/*@** 
+/*@*****************************************************
+
+/*
+*  SR#              INIT   DATE        DESCRIPTION
+*  -----------------------------------------------------------------------
+*  20050504-004-01   DAR   02/16/06    Initial implementation  
+*  20051117-002-01   DAR   04/04/06	   Extend to include 13.0 enhancements
+*  20060713-004-01   DAR   07/19/06    14.0 Base changes/additions
+*  20070802-001-01   DAR   10/26/07    Surrender quote enhancements
+*  20070806-003-01   JWS   02/18/08    Health Requote
+*  20070806-003-01   JWS   02/21/08    John Hancock mod (KAM, SES, DAR)
+*  20060818-015-01   DAR   03/24/08    New Business Credit Insurance API
+*  20060818-015-03   DAR   06/03/08    Add YEI properties for NB Credit Insurance
+*  20070730-003-01   DAR   09/08/08    Reprojection enhancement
+*  20090604-004-01   DAR   07/06/09    Updates to Illustration API
+*  20101008-003-01   DAR   07/13/10    Add custom premium illustration API.  
+*  20101008-003-01   WAR   07/16/10    Add custom disclosure quote API.
+*  20101008-003-01   DAR   12/01/10    Implement premium illus and disclosure 
+*                                      interfaces.  
+*  20110621-005-01   DAR   07/28/11    Enhancements to quote benefit changes
+*  20111205-001-01   DAR   02/23/12    Implement TerminatePolicyBenefit API.                                        
+*  20111117-006-01   DAR   05/17/12    Retrofit 20110621-005-01, 20111205-001-01 
+*  20111013-00601    DAR   10/07/12    Implement RMD Quote API  
+*  20121106-004-01   DAR   11/07/12    Enhance Deposit Allocation API                                       
+*  20130104-002-01   DAR   01/07/13    Add Perform Edits Only to systematics. 
+*  20130226-004-01   DAR   03/31/13    Add Commission Control API
+*  20131015-001-01   DAR   10/28/13    Support WCF and Web Services
+*  20140129-005-01   JWS   03/05/14    SPIA Calculator
+*  20141010-004-01   DAR   02/17/15    Add call to retrieve Transfer Counts, Systematic API
+*  20150601-002-01   AKR   01/11/16    New Co-Pol Enhancements   
+*  20150311-012-32   DAR   09/27/16    Add new API to retrieve Trace Screen rate/premium information.  
+*  20140611-015-01   SAP   10/10/16    Added new ENS API
+*/
+
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Description;
+
+
+namespace PDMA.LifePro 
+{
+	// This is a collection of interfaces that both the server and client side 
+	// components will reference.  This way, the client side components need not 
+	// reference the full server-side modules, which are called remotely anyway.  
+	// Each interface class resembles one of the server side classes, but omits 
+	// things that the client won't need to "see", like private properties, etc. 
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+	public interface IAddrAPI   {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]  
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose() ;
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+		AddressResponse RunAddressFunction (ref AddressRequest inProps ) ;
+
+        //20150601-002  011116 
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        AddressResponse GetAddress(ref AddressRequest inProps);
+        //20150601-002  011116 end
+        //20150601-002  011416 start
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        AddressResponse AddAddressForPolicy(ref AddressRequest inProps);
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        AddressResponse UpdateAddressForPolicy(ref AddressRequest inProps);
+	}
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IAddressService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        AddressResponse RunAddressFunction(ref AddressRequest inProps);
+        //20150601-002 011416 Begin
+        [OperationContract()]
+        AddressResponse GetAddress(ref AddressRequest inProps);
+        [OperationContract()]
+        AddressResponse AddAddressForPolicy(ref AddressRequest inProps);
+        [OperationContract()]
+        AddressResponse UpdateAddressForPolicy(ref AddressRequest inProps);
+        //20150601-002 011416 End
+    }
+
+
+    // No need to support session state with this interface. 
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IAPIListener
+    {
+
+        [OperationContract()]
+        int StartSession(out int assignedPort, out string message);
+
+        [OperationContract()]
+        int EndSession(int assignedPort, out string message);
+
+        [OperationContract()]
+        APIListenerInfo GetInfo();
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IBalInqu {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+		BalanceInquiryResponse RunInquiry (BalanceInquiryRequest inProps ); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IBalanceInquiryService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        BalanceInquiryResponse RunInquiry(BalanceInquiryRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IDepAllc  {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        DepositAllocationResponse RetrieveAllocations(ref DepositAllocationRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        DepositAllocationResponse RefreshAvailability (ref DepositAllocationRequest inProps ) ;
+
+        // PerformEditsOnly does all edits of UpdateAllocations, and then stops.  
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse PerformEditsOnly(DepositAllocationRequest inProps);   
+
+        // UpdateAllocations does edits again, and then completes the update. 
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse UpdateAllocations (DepositAllocationRequest inProps ) ; 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IDepositAllocationService
+    {
+
+        [OperationContract()]
+        DepositAllocationResponse RetrieveAllocations(ref DepositAllocationRequest inProps);
+
+        [OperationContract()]
+        DepositAllocationResponse RefreshAvailability(ref DepositAllocationRequest inProps);
+
+        [OperationContract()]
+        BaseResponse PerformEditsOnly(DepositAllocationRequest inProps);
+
+        [OperationContract()]
+        BaseResponse UpdateAllocations(DepositAllocationRequest inProps);
+
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface ILonQuote  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        LoanQuoteResponse RunQuote(LoanQuoteRequest inProps); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ILoanQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        LoanQuoteResponse RunQuote(LoanQuoteRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface INameAPI  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        NameResponse RunNameFunction(NameRequest inProps); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface INameService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        NameResponse RunNameFunction(NameRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IPolcAPI  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        PolicyInquiryResponse GetPolcInfo(PolicyInquiryRequest inProps); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IPolicyInquiryService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        PolicyInquiryResponse GetPolcInfo(PolicyInquiryRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IPolcLst {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        void ClearRelationships() ;
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        PolicyListResponse GetPolcList (PolicyListRequest inProps ) ; 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IPolicyListService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+
+        [OperationContract()]
+        PolicyListResponse GetPolcList(PolicyListRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IPrmQuote  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        PremiumQuoteResponse RunQuote(PremiumQuoteRequest inProps); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IPremiumQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        PremiumQuoteResponse RunQuote(PremiumQuoteRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IProposl  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ProposalResponse RunProposal(ProposalRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ProposalRequest LoadExistingPolicy(string company, string policy, int effectivedate, out int returncode, out string message);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        void AcceptSurrenderQuote (ISurQuote inQuote);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        void AcceptDeathQuote (IDthQuote inQuote);    		 
+	
+		// Values that these routines compute must be transmitted back to user. 
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ProposalRequest InitFutrTable(ProposalRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ProposalRequest IndexPremium (ProposalRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        string LoadTradTable ();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        string LoadUlTable (); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IProposalService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        ProposalResponse RunProposal(ProposalRequest inProps);
+
+        [OperationContract()]
+        ProposalRequest InitFutrTable(ProposalRequest inProps, out int returncode, out string message);
+
+        [OperationContract()]
+        ProposalRequest IndexPremium(ProposalRequest inProps, out int returncode, out string message);
+
+        [OperationContract()]
+        ProposalRequest LoadExistingPolicy(string usertype, string company, string policy, int effectivedate, out int returncode, out string message);
+
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface ISurQuote {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        SurrenderQuoteResponse RunQuote(SurrenderQuoteRequest inProps); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ISurrenderQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        SurrenderQuoteResponse RunQuote(SurrenderQuoteRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface ISysRqst  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BalanceInquiryResponse RunInquiry(BalanceInquiryRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse CancelSystematic(SystematicRequest inProps); 
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse PerformEditsOnly(SystematicRequest inProps);   
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        SystematicResponse SaveSystematic (SystematicRequest inProps );
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        SystematicResponse GetTransferCount (SystematicRequest inProps);
+
+
+	}
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ISystematicRequestService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+
+        [OperationContract()]
+        BaseResponse CancelSystematic(SystematicRequest inProps); 
+
+        [OperationContract()]
+        BaseResponse PerformEditsOnly(SystematicRequest inProps);   
+
+        [OperationContract()]
+        SystematicResponse SaveSystematic(SystematicRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IAiefApi  {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+		// For this API, nearly all input items are also output.  
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse RunInterfaceFunction (ref AgentRequest inProps ); 
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IAgentService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        BaseResponse RunInterfaceFunction(ref AgentRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IFileBtv {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse ExecFunction(ref DatabaseRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse FindFileNumber (ref DatabaseRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse FindFileLength (ref DatabaseRequest inProps);   
+	}
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IDatabaseService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        BaseResponse ExecFunction(ref DatabaseRequest inProps);
+
+        [OperationContract()]
+        BaseResponse FindFileNumber(ref DatabaseRequest inProps);
+
+        [OperationContract()]
+        BaseResponse FindFileLength(ref DatabaseRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IIllInp {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        IllustrationInputResponse RetrieveParameters(IllustrationInputRequest inProps);
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IIllustrationInputService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        IllustrationInputResponse RetrieveParameters(IllustrationInputRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IMultQuote 
+	{
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        MultipleInsuredQuoteRequest LoadExistingBenefits(string company, string policy, int effectivedate, out int returncode, out string message);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        MultipleInsuredQuoteRequest LoadWithTarget(string company, string policy, int effectivedate, string[] targetBenefitCode, double[] targetDMB,
+                                      out int returncode, out string message);
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        MultipleInsuredQuoteResponse RunRequote (MultipleInsuredQuoteRequest inProps);  
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IMultipleInsuredQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        MultipleInsuredQuoteResponse RunRequote(MultipleInsuredQuoteRequest inProps);
+
+        [OperationContract()]
+        MultipleInsuredQuoteRequest LoadWithTarget(string usertype, string company, string policy, int effectivedate, string[] targetBenefitCode, double[] targetDMB,
+                                                   out int returncode, out string message);
+
+        [OperationContract()]
+        MultipleInsuredQuoteRequest LoadExistingBenefits(string usertype, string company, string policy, int effectivedate, out int returncode, out string message);
+    
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IHealthCalc
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        HealthBenefitQuoteResponse RunQuote(HealthBenefitQuoteRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IHealthBenefitQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        HealthBenefitQuoteResponse RunQuote(HealthBenefitQuoteRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface ICINewBs
+	{
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        CreditInsuranceNewBusinessResponse InitiateApplication(CreditInsuranceNewBusinessRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        CreditInsuranceNewBusinessResponse QuoteApplication(CreditInsuranceNewBusinessRequest inProps);  
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ICreditInsuranceNewBusinessService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+
+        [OperationContract()]
+        CreditInsuranceNewBusinessResponse InitiateApplication(CreditInsuranceNewBusinessRequest inProps);
+        
+        [OperationContract()]
+        CreditInsuranceNewBusinessResponse QuoteApplication(CreditInsuranceNewBusinessRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IPremIllus
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        PremiumIllustrationResponse RunQuote(PremiumIllustrationRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IPremiumIllustrationService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        PremiumIllustrationResponse RunQuote(PremiumIllustrationRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IDiscQuote
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        DisclosureQuoteResponse RunQuote(DisclosureQuoteRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IDisclosureQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+
+        [OperationContract()]
+        DisclosureQuoteResponse RunQuote(DisclosureQuoteRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IDthQuote {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        DeathQuoteResponse RunQuote (DeathQuoteRequest inProps ) ;
+	}
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IDeathQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        DeathQuoteResponse RunQuote(DeathQuoteRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface ITerminatePolicyBenefit
+    {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        TerminatePolicyBenefitResponse ExecuteTermination(TerminatePolicyBenefitRequest inProps);   
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ITerminatePolicyBenefitService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        TerminatePolicyBenefitResponse ExecuteTermination(TerminatePolicyBenefitRequest inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IRMDQuote
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        RMDQuoteResponse RunQuote(RMDQuoteRequest inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IRMDQuoteService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        RMDQuoteResponse RunQuote(RMDQuoteRequest inProps);
+    }
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+
+    public interface ICommissionControl
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse AddNewCommissionSplit(CommissionControlRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+
+        CommissionControlResponse RetrieveCommissionSplits(CommissionControlRequest inProps); 
+
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ICommissionControlService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        BaseResponse AddNewCommissionSplit(CommissionControlRequest inProps);
+        [OperationContract()]
+        CommissionControlResponse RetrieveCommissionSplits(CommissionControlRequest inProps); 
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+
+    public interface ISPIACalc
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        //like agent, this one uses much of the pass areas as input and output both
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        BaseResponse RunQuote(ref SPIACalcInput inProps);
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface ISPIACalcService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        BaseResponse RunQuote(ref SPIACalcInput inProps);
+    }
+
+
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IValueRetrieve
+    {
+
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ValueRetrieveResponse RetrieveTraceValues(ValueRetrieveRequest inProps);
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        ValueRetrieveGWResponse RetrieveGWValues(ValueRetrieveGWRequest inProps);
+
+    
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IValueRetrieveService
+    {
+        [OperationContract()]
+        ValueRetrieveResponse RetrieveTraceValues(ValueRetrieveRequest inProps);
+
+        [OperationContract()] 
+        ValueRetrieveGWResponse RetrieveGWValues(ValueRetrieveGWRequest inProps);  
+
+    }
+
+    //20140611-015-01   SAP   Added fields for new ENS API
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Required)]
+    public interface IEnsAPI
+    {
+        [OperationContract(IsInitiating = true, IsTerminating = false)]
+        BaseResponse Init(string userType);
+
+        [OperationContract(IsInitiating = false, IsTerminating = true)]
+        void Dispose();
+
+        [OperationContract(IsInitiating = false, IsTerminating = false)]
+        EnsResponse RunENSFunction(EnsRequest inProps);
+
+    }
+
+    [ServiceContract(Namespace = "http://pdma.net", SessionMode = SessionMode.Allowed)]
+    public interface IEnsService
+    {
+        // This interface is used by web service calls that handle all initialization, ending of resources, 
+        // etc.  
+        [OperationContract()]
+        EnsResponse RunENSFunction(EnsRequest inProps);
+    }
+
+
+    
+    /*  This is not used with the WCF techniques.  (20131015-001-01) 
+    public interface ISessionFactory  {
+
+		SessionFactoryInfo GetInfo () ; 
+		IPolcLst GetPolcLst (string userType, out OutputBase outProps); 
+		IPolcAPI GetPolcAPI (string userType, out OutputBase outProps);
+		IAddrAPI GetAddrAPI (string userType, out OutputBase outProps); 
+		IBalInqu GetBalInqu (string userType, out OutputBase outProps);
+		IDepAllc GetDepAllc (string userType, out OutputBase outProps);
+		ILonQuote GetLonQuote (string userType, out OutputBase outProps);
+		INameAPI GetNameAPI (string userType, out OutputBase outProps);
+		IPrmQuote GetPrmQuote (string userType, out OutputBase outProps);
+		IProposl GetProposl (string userType, out OutputBase outProps);
+		ISurQuote GetSurQuote (string userType, out OutputBase outProps);
+		ISysRqst GetSysRqst (string userType, out OutputBase outProps);
+		IAiefApi GetAiefApi (string userType, out OutputBase outProps);  
+		IFileBtv GetFileBtv (string userType, out OutputBase outProps);  
+		IIllInp GetIllInp (string userType, out OutputBase outProps); 
+		IMultQuote GetMultQuote (string userType, out OutputBase outProps); 
+		IHealthCalc GetHealthCalc (string userType, out OutputBase outProps);  
+		ICINewBs GetCINewBs (string userType, out OutputBase outProps);  
+		IDthQuote GetDthQuote (string userType, out OutputBase outProps);
+        IPremIllus GetPremIllus(string userType, out OutputBase outProps); 
+        IDiscQuote GetDiscQuote(string userType, out OutputBase outProps);
+        ITerminatePolicyBenefit GetTerminatePolicyBenefit(string userType, out OutputBase outProps);  
+        IRMDQuote GetRMDQuote(string userType, out OutputBase outProps);
+        ISPIACalc GetSPIACalc(string userType, out OutputBase outProps);
+
+	}
+    */  
+}

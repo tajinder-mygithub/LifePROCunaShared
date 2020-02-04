@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A3ECBE47-81F9-4FBE-8AA1-9452093A0D61}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ExlCSR.ModelLayer</RootNamespace>
+    <AssemblyName>ExlCSR.ModelLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ModelInput\Billing.cs" />
+    <Compile Include="ModelInput\BusinessSearch.cs" />
+    <Compile Include="ModelInput\DeathBenifit_Inp.cs" />
+    <Compile Include="ModelInput\Fund.cs" />
+    <Compile Include="ModelInput\PolicyGeneral_Input.cs" />
+    <Compile Include="ModelInput\PolicySearch.cs" />
+    <Compile Include="ModelInput\SurrenderQuote.cs" />
+    <Compile Include="ModelOutput\Additional_addresses.cs" />
+    <Compile Include="ModelOutput\Agent.cs" />
+    <Compile Include="ModelOutput\BankInfoDetails.cs" />
+    <Compile Include="ModelOutput\Benefits.cs" />
+    <Compile Include="ModelOutput\Business.cs" />
+    <Compile Include="ModelOutput\BusinessSearchByBusiness_SSNViewModel.cs" />
+    <Compile Include="ModelOutput\ClientDashBoardViewModel.cs" />
+    <Compile Include="ModelOutput\Customer.cs" />
+    <Compile Include="ModelOutput\CustomerSearchByPolicyViewModel.cs" />
+    <Compile Include="ModelInput\PersonSearch.cs" />
+    <Compile Include="ModelOutput\DB_Policy_coverages.cs" />
+    <Compile Include="ModelOutput\DeathBenifitTable.cs" />
+    <Compile Include="ModelOutput\Death_benifit.cs" />
+    <Compile Include="ModelOutput\Death_benifit_Discription.cs" />
+    <Compile Include="ModelOutput\FundTableData.cs" />
+    <Compile Include="ModelOutput\FundData.cs" />
+    <Compile Include="ModelOutput\FundViewModel.cs" />
+    <Compile Include="ModelOutput\Living_Benefits.cs" />
+    <Compile Include="ModelOutput\Other_Insu_Details.cs" />
+    <Compile Include="ModelOutput\Owner_data.cs" />
+    <Compile Include="ModelOutput\Person.cs" />
+    <Compile Include="ModelOutput\PersonSearchByPerson_SSNViewModel.cs" />
+    <Compile Include="ModelOutput\PolicyGeneral_output.cs" />
+    <Compile Include="ModelOutput\PolicySearchByNumber.cs" />
+    <Compile Include="ModelOutput\Policy_summary.cs" />
+    <Compile Include="ModelOutput\Policy_GeneralViewModel.cs" />
+    <Compile Include="ModelOutput\Policy_summaryViewModel.cs" />
+    <Compile Include="ModelOutput\PremiumQuoteBilling.cs" />
+    <Compile Include="ModelOutput\RelationshipDetail.cs" />
+    <Compile Include="ModelOutput\Relationship_Details.cs" />
+    <Compile Include="ModelOutput\SurrenderQuoteData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ModelInput\SearchViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

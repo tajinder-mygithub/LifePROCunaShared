@@ -1,0 +1,294 @@
+/*@*****************************************************
+/*@** 
+/*@** Licensed Materials - Property of
+/*@** ExlService Holdings, Inc.
+/*@**  
+/*@** (C) 1983-2013 ExlService Holdings, Inc.  All Rights Reserved.
+/*@** 
+/*@** Contains confidential and trade secret information.  
+/*@** Copyright notice is precautionary only and does not
+/*@** imply publication.
+/*@** 
+/*@*****************************************************
+
+/*
+*  SR#              INIT  DATE        DESCRIPTION
+*  -----------------------------------------------------------------------
+*  20131015-001-01  DAR   10/28/13    Support WCF and Web Services
+*/
+
+
+using System;
+using System.ServiceModel;
+using System.ServiceModel.Description;  
+
+
+namespace PDMA.LifePro
+{
+	/// <summary>
+	/// The LifePRO Deposit Allocation Service object, which allows inquiry on and update of Deposit Allocation information.  
+	/// </summary>
+
+    public partial class SystematicRequestClient : System.ServiceModel.ClientBase<PDMA.LifePro.ISysRqst>, PDMA.LifePro.ISysRqst
+    {
+
+
+        public SystematicRequestClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) :
+            base(binding, remoteAddress)
+        {
+        }
+
+        public PDMA.LifePro.BaseResponse Init(string userType)
+        {
+            return base.Channel.Init(userType);
+        }
+
+        public void Dispose()
+        {
+            base.Channel.Dispose();
+        }
+
+        public PDMA.LifePro.BalanceInquiryResponse RunInquiry(PDMA.LifePro.BalanceInquiryRequest inProps)
+        {
+            return base.Channel.RunInquiry(inProps);
+        }
+
+
+        public PDMA.LifePro.BaseResponse CancelSystematic(PDMA.LifePro.SystematicRequest inProps)
+        {
+          // Because of stateless nature of calls, must do RunInquiry first so that server is initialized.  
+
+
+            // We create a temporary input block that can be discarded.  The actual udpate should attempt 
+            // to use the inputs the user provided.  
+            BalanceInquiryRequest tempInput = new BalanceInquiryRequest();
+            tempInput.CompanyCode = (string) inProps.CompanyCode.Clone();
+            tempInput.EffectiveDate = inProps.EffectiveDate;
+            tempInput.PolicyNumber = (string) inProps.PolicyNumber.Clone();
+            tempInput.UserType = (string)inProps.UserType.Clone();   
+
+            BalanceInquiryResponse retrieveResponse = base.Channel.RunInquiry (tempInput);
+            if (retrieveResponse.ReturnCode == 0)
+                return base.Channel.CancelSystematic(inProps);
+            else
+            {
+                SystematicResponse response = new SystematicResponse();
+                response.ReturnCode = retrieveResponse.ReturnCode;
+                response.ErrorMessage = retrieveResponse.ErrorMessage;
+                return response;   
+            }
+        }
+
+
+
+        public PDMA.LifePro.BaseResponse PerformEditsOnly(PDMA.LifePro.SystematicRequest inProps)
+        {
+          // Because of stateless nature of calls, must do RunInquiry first so that server is initialized.  
+
+
+            // We create a temporary input block that can be discarded.  The actual udpate should attempt 
+            // to use the inputs the user provided.  
+            BalanceInquiryRequest tempInput = new BalanceInquiryRequest();
+            tempInput.CompanyCode = (string) inProps.CompanyCode.Clone();
+            tempInput.EffectiveDate = inProps.EffectiveDate;
+            tempInput.PolicyNumber = (string) inProps.PolicyNumber.Clone();
+            tempInput.UserType = (string)inProps.UserType.Clone();   
+
+            BalanceInquiryResponse retrieveResponse = base.Channel.RunInquiry (tempInput);
+            if (retrieveResponse.ReturnCode == 0)
+                return base.Channel.PerformEditsOnly(inProps);
+            else
+            {
+                SystematicResponse response = new SystematicResponse();
+                response.ReturnCode = retrieveResponse.ReturnCode;
+                response.ErrorMessage = retrieveResponse.ErrorMessage;
+                return response;   
+            }
+        }
+
+
+        public PDMA.LifePro.SystematicResponse GetTransferCount(PDMA.LifePro.SystematicRequest inProps)
+        {
+                return base.Channel.GetTransferCount(inProps);
+        }
+
+
+        public PDMA.LifePro.SystematicResponse SaveSystematic(PDMA.LifePro.SystematicRequest inProps)
+        {
+          // Because of stateless nature of calls, must do RunInquiry first so that server is initialized.  
+
+
+            // We create a temporary input block that can be discarded.  The actual udpate should attempt 
+            // to use the inputs the user provided.  
+            BalanceInquiryRequest tempInput = new BalanceInquiryRequest();
+            tempInput.CompanyCode = (string) inProps.CompanyCode.Clone();
+            tempInput.EffectiveDate = inProps.EffectiveDate;
+            tempInput.PolicyNumber = (string) inProps.PolicyNumber.Clone();
+            tempInput.UserType = (string)inProps.UserType.Clone();   
+
+            BalanceInquiryResponse retrieveResponse = base.Channel.RunInquiry (tempInput);
+            if (retrieveResponse.ReturnCode == 0)
+                return base.Channel.SaveSystematic(inProps);
+            else
+            {
+                SystematicResponse response = new SystematicResponse();
+                response.ReturnCode = retrieveResponse.ReturnCode;
+                response.ErrorMessage = retrieveResponse.ErrorMessage;
+                return response;   
+            }
+        }
+
+    }
+    
+    
+    public class SystematicRequestService : ISystematicRequestService
+	{
+		
+        public static APIListener api32HH; 
+        public SystematicRequestClient client; 
+
+
+		public BaseResponse PerformEditsOnly (SystematicRequest inProps ) 
+		{
+
+            int assignedPort; 
+            string message = "";
+            BaseResponse output = new BaseResponse();
+            SystematicResponse outProps = new SystematicResponse();
+            try
+            {
+
+                assignedPort = SystematicRequestInitSteps(inProps, ref message, ref output);
+
+                if (output.ReturnCode == 0)
+                {
+                    output = client.PerformEditsOnly(inProps);
+                }
+
+                client.Dispose();
+                api32HH.EndSession(assignedPort, out message);      
+
+            }
+            catch (Exception ex)
+            {
+                outProps.ReturnCode = 9999;
+                outProps.ErrorMessage = ex.Message;
+
+            }
+			
+			return output ; 
+		
+		}
+
+
+		public BaseResponse CancelSystematic (SystematicRequest inProps ) 
+		{
+
+            int assignedPort; 
+            string message = "";
+            BaseResponse output = new BaseResponse();
+            try
+            {
+
+                assignedPort = SystematicRequestInitSteps(inProps, ref message, ref output);
+
+                if (output.ReturnCode == 0)
+                {
+                    output = client.CancelSystematic(inProps);
+                }
+
+                client.Dispose();
+                api32HH.EndSession(assignedPort, out message);      
+
+            }
+            catch (Exception ex)
+            {
+                output.ReturnCode = 9999;
+                output.ErrorMessage = ex.Message;
+
+            }
+			
+			return output ; 
+		
+		}
+
+
+
+
+		public SystematicResponse SaveSystematic (SystematicRequest inProps ) 
+		{
+
+            int assignedPort; 
+            string message = "";
+            BaseResponse output = new BaseResponse();
+            SystematicResponse outProps = new SystematicResponse();
+            try
+            {
+
+                assignedPort = SystematicRequestInitSteps(inProps, ref message, ref output);
+
+                if (output.ReturnCode != 0)
+                {
+                    outProps.ReturnCode = output.ReturnCode;
+                    outProps.ErrorMessage = output.ErrorMessage;
+                }
+                else 
+                    outProps = client.SaveSystematic(inProps);
+
+                client.Dispose();
+                api32HH.EndSession(assignedPort, out message);      
+
+            }
+            catch (Exception ex)
+            {
+                outProps.ReturnCode = 9999;
+                outProps.ErrorMessage = ex.Message;
+
+            }
+			
+			return outProps ; 
+		
+		}
+
+        private int SystematicRequestInitSteps(SystematicRequest inProps, ref string message, ref BaseResponse output)
+        {
+            int assignedPort;
+            int rc = api32HH.StartSession(out assignedPort, out message);
+
+            System.ServiceModel.Channels.Binding selectBinding;
+            EndpointAddress selectEndPoint;
+
+            Util.DetermineBinding(assignedPort, "SysRqst", out selectBinding, out selectEndPoint);
+
+            client = new SystematicRequestClient(selectBinding, selectEndPoint);
+
+            bool isAvailable = false;
+            int attempts = 0;
+            while (!isAvailable && attempts < 20)
+            {
+                try
+                {
+                    output = client.Init(inProps.UserType);
+                    isAvailable = true;
+                }
+
+                catch (Exception ex)
+                {
+                    client = new SystematicRequestClient(selectBinding, selectEndPoint);
+                    attempts++;
+                    if (attempts > 19)
+                    {
+                        output.ReturnCode = 99000;
+                        output.ErrorMessage = "Internal Communication error on Application Server.  An APISessn.exe instance could not start.  Check configuration, re-start environment using the Thin Service Controller, and try again.  System error is: " + ex.Message;
+                    }
+
+                }
+            }
+
+            return assignedPort;
+        }
+
+	
+	
+	}
+}

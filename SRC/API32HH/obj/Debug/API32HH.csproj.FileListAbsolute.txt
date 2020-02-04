@@ -1,0 +1,7 @@
+G:\develop\JS\2010040800401\API32HH\bin\Debug\API32HH.exe.config
+Y:\tyagia\v19rel\API32HH\bin\Debug\API32HH.exe.config
+Y:\tyagia\v19rel\API32HH\bin\Debug\API32HH.exe
+Y:\tyagia\v19rel\API32HH\bin\Debug\API32HH.pdb
+Y:\tyagia\v19rel\API32HH\obj\Debug\API32HH.csprojResolveAssemblyReference.cache
+Y:\tyagia\v19rel\API32HH\obj\Debug\API32HH.exe
+Y:\tyagia\v19rel\API32HH\obj\Debug\API32HH.pdb

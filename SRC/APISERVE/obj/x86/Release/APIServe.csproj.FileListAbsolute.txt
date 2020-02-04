@@ -1,0 +1,5 @@
+D:\LifeProDev\20110526-004-01\11600\-BASE\API\APIServe\bin\x86\Release\APIServe.dll
+D:\LifeProDev\20110526-004-01\11600\-BASE\API\APIServe\bin\x86\Release\APIInter.dll
+D:\LifeProDev\20110526-004-01\11600\-BASE\API\APIServe\bin\x86\Release\lpnetapi.dll
+D:\LifeProDev\20110526-004-01\11600\-BASE\API\APIServe\obj\x86\Release\ResolveAssemblyReference.cache
+D:\LifeProDev\20110526-004-01\11600\-BASE\API\APIServe\obj\x86\Release\APIServe.dll

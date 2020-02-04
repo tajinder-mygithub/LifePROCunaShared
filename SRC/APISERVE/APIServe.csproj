@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{05E4368E-CE02-46C4-946C-3410F4D268E0}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>APIServe</AssemblyName>
+    <AssemblyOriginatorKeyFile>APIServe.snk</AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>PDMA.LifePro</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <SignAssembly>true</SignAssembly>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>http://localhost/APIServe/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>true</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <BaseAddress>285212672</BaseAddress>
+    <Optimize>true</Optimize>
+    <DebugType>
+    </DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="APIInter, Version=11800.5.8.2014, Culture=neutral, PublicKeyToken=0b82a5c556d6106a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\APIInter.dll</HintPath>
+    </Reference>
+    <Reference Include="OADDRAPI, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OADDRAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="OAIEFAPI, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OAIEFAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="OAPPLICA, Version=1312.11800.1211.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\OAPPLICA.DLL</HintPath>
+    </Reference>
+    <Reference Include="OBALINQU, Version=60000.11800.508.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\inantdev\files\LifePRO\11900\EXEC-NC\-BASE\OBALINQU.DLL</HintPath>
+    </Reference>
+    <Reference Include="OCINEWBS, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OCINEWBS.DLL</HintPath>
+    </Reference>
+    <Reference Include="OCOMCTRL, Version=1312.11800.1211.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\inantdev\files\LifePRO\11900\EXEC-NC\-BASE\OCOMCTRL.DLL</HintPath>
+    </Reference>
+    <Reference Include="ODEPALLC, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ODEPALLC.DLL</HintPath>
+    </Reference>
+    <Reference Include="ODISQUOT, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ODISQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="ODTHQUOT, Version=60000.11800.508.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ODTHQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="OENSEAPI">
+      <HintPath>..\OENSEAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="OFILEBTV, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OFILEBTV.DLL</HintPath>
+    </Reference>
+    <Reference Include="OHLTHCAL, Version=60000.11700.525.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OHLTHCAL.DLL</HintPath>
+    </Reference>
+    <Reference Include="OLONQUOT, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OLONQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="OMULTDVR, Version=60000.11700.525.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OMULTDVR.DLL</HintPath>
+    </Reference>
+    <Reference Include="ONAMEAPI, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ONAMEAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPILLINP, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPILLINP.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPOLCAPI, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPOLCAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPOLCLST, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPOLCLST.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPRMILLU, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPRMILLU.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPRMQUOT, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPRMQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="OPROPOSL, Version=60000.11700.312.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OPROPOSL.DLL</HintPath>
+    </Reference>
+    <Reference Include="ORMDQUOT">
+      <HintPath>..\ORMDQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="OSPIACAL">
+      <HintPath>..\OSPIACAL.DLL</HintPath>
+    </Reference>
+    <Reference Include="OSURQUOT, Version=60000.11800.326.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OSURQUOT.DLL</HintPath>
+    </Reference>
+    <Reference Include="OSYSRQST, Version=60000.11700.1107.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\OSYSRQST.DLL</HintPath>
+    </Reference>
+    <Reference Include="OTERMNTE, Version=60000.11801.1117.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Release\OTERMNTE.DLL</HintPath>
+    </Reference>
+    <Reference Include="OVALUAPI, Version=1.1.1.1, Culture=neutral, PublicKeyToken=178aa77fe6f6d6f8, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>\\inantdev\files\LifePRO\11900\EXEC\-BASE\OVALUAPI.DLL</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OrigAPIClasses\AddrAPI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\EnsAPI.cs" />
+    <Compile Include="OrigAPIClasses\SPIACalcApi.cs" />
+    <Compile Include="OrigAPIClasses\CommissionControl.cs" />
+    <Compile Include="OrigAPIClasses\ValueRetrieve.cs" />
+    <Compile Include="ServiceClasses\AddressService.cs" />
+    <Compile Include="ServiceClasses\AgentService.cs" />
+    <Compile Include="OrigAPIClasses\AiefApi.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\APIListener.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\BalanceInquiryService.cs" />
+    <Compile Include="OrigAPIClasses\BalInqu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\CINewBs.cs" />
+    <Compile Include="ServiceClasses\CommissionControlService.cs" />
+    <Compile Include="ServiceClasses\CreditInsuranceNewBusinessService.cs" />
+    <Compile Include="ServiceClasses\DatabaseService.cs" />
+    <Compile Include="ServiceClasses\DeathQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\DepAllc.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\DepositAllocationService.cs" />
+    <Compile Include="ServiceClasses\DisclosureQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\DthQuote.cs" />
+    <Compile Include="OrigAPIClasses\DiscQuote.cs" />
+    <Compile Include="OrigAPIClasses\FileBtv.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\EnsService.cs" />
+    <Compile Include="ServiceClasses\HealthBenefitQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\HealthCalc.cs" />
+    <Compile Include="OrigAPIClasses\IllInp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\IllustrationInputService.cs" />
+    <Compile Include="ServiceClasses\LoanQuoteService.cs" />
+    <Compile Include="Log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\LonQuote.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\MultipleInsuredQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\MultQuote.cs" />
+    <Compile Include="OrigAPIClasses\NameAPI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\NameService.cs" />
+    <Compile Include="OrigAPIClasses\PolcAPI.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\PolcLst.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\PolicyInquiryService.cs" />
+    <Compile Include="ServiceClasses\PolicyListService.cs" />
+    <Compile Include="OrigAPIClasses\PremIllus.cs" />
+    <Compile Include="ServiceClasses\PremiumIllustrationService.cs" />
+    <Compile Include="ServiceClasses\PremiumQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\PrmQuote.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\ProposalService.cs" />
+    <Compile Include="OrigAPIClasses\Proposl.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\RMDQuote.cs" />
+    <Compile Include="ServiceClasses\RMDQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\SurQuote.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ServiceClasses\SPIACalcService.cs" />
+    <Compile Include="ServiceClasses\SurrenderQuoteService.cs" />
+    <Compile Include="OrigAPIClasses\SysRqst.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="OrigAPIClasses\TerminateMember.cs" />
+    <Compile Include="ServiceClasses\SystematicRequestService.cs" />
+    <Compile Include="ServiceClasses\TerminatePolicyBenefitService.cs" />
+    <Compile Include="ServiceClasses\ValueRetrieveService.cs" />
+    <Compile Include="Util.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="APIServe.snk" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

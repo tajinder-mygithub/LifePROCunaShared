@@ -1,0 +1,1806 @@
+--20160208-005-01 SAP Delete the key tables of the normalized tables
+--20161212-001-01 CDM Add tables to delete
+--20161212-001-01 SAP Removed PSCTY, PRQUE, PRELA, PRHST table
+--20170131-007-01 SAP Removed PBILA table
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY1')
+   DROP TABLE [dbo].[PENSE_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY2')
+   DROP TABLE [dbo].[PENSE_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY3')
+   DROP TABLE [dbo].[PENSE_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY4')
+   DROP TABLE [dbo].[PENSE_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY5')
+   DROP TABLE [dbo].[PENSE_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY6')
+   DROP TABLE [dbo].[PENSE_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY7')
+   DROP TABLE [dbo].[PENSE_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSE_KEY8')
+   DROP TABLE [dbo].[PENSE_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY1')
+   DROP TABLE [dbo].[PACTG_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY2')
+   DROP TABLE [dbo].[PACTG_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY3')
+   DROP TABLE [dbo].[PACTG_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY4')
+   DROP TABLE [dbo].[PACTG_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY5')
+   DROP TABLE [dbo].[PACTG_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY6')
+   DROP TABLE [dbo].[PACTG_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY7')
+   DROP TABLE [dbo].[PACTG_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PACTG_KEY8')
+   DROP TABLE [dbo].[PACTG_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY1')
+   DROP TABLE [dbo].[PPPAC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY2')
+   DROP TABLE [dbo].[PPPAC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY3')
+   DROP TABLE [dbo].[PPPAC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY4')
+   DROP TABLE [dbo].[PPPAC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY5')
+   DROP TABLE [dbo].[PPPAC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY6')
+   DROP TABLE [dbo].[PPPAC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY7')
+   DROP TABLE [dbo].[PPPAC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPAC_KEY8')
+   DROP TABLE [dbo].[PPPAC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY1')
+   DROP TABLE [dbo].[PYRTX_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY2')
+   DROP TABLE [dbo].[PYRTX_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY3')
+   DROP TABLE [dbo].[PYRTX_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY4')
+   DROP TABLE [dbo].[PYRTX_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY5')
+   DROP TABLE [dbo].[PYRTX_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY6')
+   DROP TABLE [dbo].[PYRTX_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY7')
+   DROP TABLE [dbo].[PYRTX_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PYRTX_KEY8')
+   DROP TABLE [dbo].[PYRTX_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY1')
+   DROP TABLE [dbo].[PCHEK_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY2')
+   DROP TABLE [dbo].[PCHEK_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY3')
+   DROP TABLE [dbo].[PCHEK_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY4')
+   DROP TABLE [dbo].[PCHEK_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY5')
+   DROP TABLE [dbo].[PCHEK_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY6')
+   DROP TABLE [dbo].[PCHEK_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY7')
+   DROP TABLE [dbo].[PCHEK_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCHEK_KEY8')
+   DROP TABLE [dbo].[PCHEK_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY1')
+   DROP TABLE [dbo].[PDOCD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY2')
+   DROP TABLE [dbo].[PDOCD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY3')
+   DROP TABLE [dbo].[PDOCD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY4')
+   DROP TABLE [dbo].[PDOCD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY5')
+   DROP TABLE [dbo].[PDOCD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY6')
+   DROP TABLE [dbo].[PDOCD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY7')
+   DROP TABLE [dbo].[PDOCD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCD_KEY8')
+   DROP TABLE [dbo].[PDOCD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY1')
+   DROP TABLE [dbo].[PDOCI_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY2')
+   DROP TABLE [dbo].[PDOCI_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY3')
+   DROP TABLE [dbo].[PDOCI_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY4')
+   DROP TABLE [dbo].[PDOCI_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY5')
+   DROP TABLE [dbo].[PDOCI_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY6')
+   DROP TABLE [dbo].[PDOCI_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY7')
+   DROP TABLE [dbo].[PDOCI_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDOCI_KEY8')
+   DROP TABLE [dbo].[PDOCI_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY1')
+   DROP TABLE [dbo].[PPACH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY2')
+   DROP TABLE [dbo].[PPACH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY3')
+   DROP TABLE [dbo].[PPACH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY4')
+   DROP TABLE [dbo].[PPACH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY5')
+   DROP TABLE [dbo].[PPACH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY6')
+   DROP TABLE [dbo].[PPACH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY7')
+   DROP TABLE [dbo].[PPACH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPACH_KEY8')
+   DROP TABLE [dbo].[PPACH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY1')
+   DROP TABLE [dbo].[PPYAD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY2')
+   DROP TABLE [dbo].[PPYAD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY3')
+   DROP TABLE [dbo].[PPYAD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY4')
+   DROP TABLE [dbo].[PPYAD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY5')
+   DROP TABLE [dbo].[PPYAD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY6')
+   DROP TABLE [dbo].[PPYAD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY7')
+   DROP TABLE [dbo].[PPYAD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAD_KEY8')
+   DROP TABLE [dbo].[PPYAD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY1')
+   DROP TABLE [dbo].[PDDEP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY2')
+   DROP TABLE [dbo].[PDDEP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY3')
+   DROP TABLE [dbo].[PDDEP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY4')
+   DROP TABLE [dbo].[PDDEP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY5')
+   DROP TABLE [dbo].[PDDEP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY6')
+   DROP TABLE [dbo].[PDDEP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY7')
+   DROP TABLE [dbo].[PDDEP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDEP_KEY8')
+   DROP TABLE [dbo].[PDDEP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY1')
+   DROP TABLE [dbo].[PNAME_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY2')
+   DROP TABLE [dbo].[PNAME_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY3')
+   DROP TABLE [dbo].[PNAME_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY4')
+   DROP TABLE [dbo].[PNAME_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY5')
+   DROP TABLE [dbo].[PNAME_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY6')
+   DROP TABLE [dbo].[PNAME_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY7')
+   DROP TABLE [dbo].[PNAME_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNAME_KEY8')
+   DROP TABLE [dbo].[PNAME_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY1')
+   DROP TABLE [dbo].[PHSTN_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY2')
+   DROP TABLE [dbo].[PHSTN_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY3')
+   DROP TABLE [dbo].[PHSTN_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY4')
+   DROP TABLE [dbo].[PHSTN_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY5')
+   DROP TABLE [dbo].[PHSTN_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY6')
+   DROP TABLE [dbo].[PHSTN_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY7')
+   DROP TABLE [dbo].[PHSTN_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHSTN_KEY8')
+   DROP TABLE [dbo].[PHSTN_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY1')
+   DROP TABLE [dbo].[PPYCT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY2')
+   DROP TABLE [dbo].[PPYCT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY3')
+   DROP TABLE [dbo].[PPYCT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY4')
+   DROP TABLE [dbo].[PPYCT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY5')
+   DROP TABLE [dbo].[PPYCT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY6')
+   DROP TABLE [dbo].[PPYCT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY7')
+   DROP TABLE [dbo].[PPYCT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYCT_KEY8')
+   DROP TABLE [dbo].[PPYCT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY1')
+   DROP TABLE [dbo].[PCSHR_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY2')
+   DROP TABLE [dbo].[PCSHR_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY3')
+   DROP TABLE [dbo].[PCSHR_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY4')
+   DROP TABLE [dbo].[PCSHR_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY5')
+   DROP TABLE [dbo].[PCSHR_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY6')
+   DROP TABLE [dbo].[PCSHR_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY7')
+   DROP TABLE [dbo].[PCSHR_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSHR_KEY8')
+   DROP TABLE [dbo].[PCSHR_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY1')
+   DROP TABLE [dbo].[PDDAC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY2')
+   DROP TABLE [dbo].[PDDAC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY3')
+   DROP TABLE [dbo].[PDDAC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY4')
+   DROP TABLE [dbo].[PDDAC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY5')
+   DROP TABLE [dbo].[PDDAC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY6')
+   DROP TABLE [dbo].[PDDAC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY7')
+   DROP TABLE [dbo].[PDDAC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDAC_KEY8')
+   DROP TABLE [dbo].[PDDAC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY1')
+   DROP TABLE [dbo].[PPCRD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY2')
+   DROP TABLE [dbo].[PPCRD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY3')
+   DROP TABLE [dbo].[PPCRD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY4')
+   DROP TABLE [dbo].[PPCRD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY5')
+   DROP TABLE [dbo].[PPCRD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY6')
+   DROP TABLE [dbo].[PPCRD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY7')
+   DROP TABLE [dbo].[PPCRD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCRD_KEY8')
+   DROP TABLE [dbo].[PPCRD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY1')
+   DROP TABLE [dbo].[PCRDH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY2')
+   DROP TABLE [dbo].[PCRDH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY3')
+   DROP TABLE [dbo].[PCRDH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY4')
+   DROP TABLE [dbo].[PCRDH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY5')
+   DROP TABLE [dbo].[PCRDH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY6')
+   DROP TABLE [dbo].[PCRDH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY7')
+   DROP TABLE [dbo].[PCRDH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRDH_KEY8')
+   DROP TABLE [dbo].[PCRDH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY1')
+   DROP TABLE [dbo].[PCIAD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY2')
+   DROP TABLE [dbo].[PCIAD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY3')
+   DROP TABLE [dbo].[PCIAD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY4')
+   DROP TABLE [dbo].[PCIAD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY5')
+   DROP TABLE [dbo].[PCIAD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY6')
+   DROP TABLE [dbo].[PCIAD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY7')
+   DROP TABLE [dbo].[PCIAD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCIAD_KEY8')
+   DROP TABLE [dbo].[PCIAD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY1')
+   DROP TABLE [dbo].[PDDPH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY2')
+   DROP TABLE [dbo].[PDDPH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY3')
+   DROP TABLE [dbo].[PDDPH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY4')
+   DROP TABLE [dbo].[PDDPH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY5')
+   DROP TABLE [dbo].[PDDPH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY6')
+   DROP TABLE [dbo].[PDDPH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY7')
+   DROP TABLE [dbo].[PDDPH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PDDPH_KEY8')
+   DROP TABLE [dbo].[PDDPH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY1')
+   DROP TABLE [dbo].[PCSAH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY2')
+   DROP TABLE [dbo].[PCSAH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY3')
+   DROP TABLE [dbo].[PCSAH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY4')
+   DROP TABLE [dbo].[PCSAH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY5')
+   DROP TABLE [dbo].[PCSAH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY6')
+   DROP TABLE [dbo].[PCSAH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY7')
+   DROP TABLE [dbo].[PCSAH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAH_KEY8')
+   DROP TABLE [dbo].[PCSAH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY1')
+   DROP TABLE [dbo].[PCSAD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY2')
+   DROP TABLE [dbo].[PCSAD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY3')
+   DROP TABLE [dbo].[PCSAD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY4')
+   DROP TABLE [dbo].[PCSAD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY5')
+   DROP TABLE [dbo].[PCSAD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY6')
+   DROP TABLE [dbo].[PCSAD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY7')
+   DROP TABLE [dbo].[PCSAD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCSAD_KEY8')
+   DROP TABLE [dbo].[PCSAD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY1')
+   DROP TABLE [dbo].[POPTT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY2')
+   DROP TABLE [dbo].[POPTT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY3')
+   DROP TABLE [dbo].[POPTT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY4')
+   DROP TABLE [dbo].[POPTT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY5')
+   DROP TABLE [dbo].[POPTT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY6')
+   DROP TABLE [dbo].[POPTT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY7')
+   DROP TABLE [dbo].[POPTT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'POPTT_KEY8')
+   DROP TABLE [dbo].[POPTT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY1')
+   DROP TABLE [dbo].[PEXTT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY2')
+   DROP TABLE [dbo].[PEXTT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY3')
+   DROP TABLE [dbo].[PEXTT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY4')
+   DROP TABLE [dbo].[PEXTT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY5')
+   DROP TABLE [dbo].[PEXTT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY6')
+   DROP TABLE [dbo].[PEXTT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY7')
+   DROP TABLE [dbo].[PEXTT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXTT_KEY8')
+   DROP TABLE [dbo].[PEXTT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY1')
+   DROP TABLE [dbo].[PCCOT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY2')
+   DROP TABLE [dbo].[PCCOT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY3')
+   DROP TABLE [dbo].[PCCOT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY4')
+   DROP TABLE [dbo].[PCCOT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY5')
+   DROP TABLE [dbo].[PCCOT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY6')
+   DROP TABLE [dbo].[PCCOT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY7')
+   DROP TABLE [dbo].[PCCOT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCCOT_KEY8')
+   DROP TABLE [dbo].[PCCOT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY1')
+   DROP TABLE [dbo].[PPCOT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY2')
+   DROP TABLE [dbo].[PPCOT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY3')
+   DROP TABLE [dbo].[PPCOT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY4')
+   DROP TABLE [dbo].[PPCOT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY5')
+   DROP TABLE [dbo].[PPCOT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY6')
+   DROP TABLE [dbo].[PPCOT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY7')
+   DROP TABLE [dbo].[PPCOT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPCOT_KEY8')
+   DROP TABLE [dbo].[PPCOT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY1')
+   DROP TABLE [dbo].[PEOBP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY2')
+   DROP TABLE [dbo].[PEOBP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY3')
+   DROP TABLE [dbo].[PEOBP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY4')
+   DROP TABLE [dbo].[PEOBP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY5')
+   DROP TABLE [dbo].[PEOBP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY6')
+   DROP TABLE [dbo].[PEOBP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY7')
+   DROP TABLE [dbo].[PEOBP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBP_KEY8')
+   DROP TABLE [dbo].[PEOBP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY1')
+   DROP TABLE [dbo].[PCRIX_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY2')
+   DROP TABLE [dbo].[PCRIX_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY3')
+   DROP TABLE [dbo].[PCRIX_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY4')
+   DROP TABLE [dbo].[PCRIX_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY5')
+   DROP TABLE [dbo].[PCRIX_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY6')
+   DROP TABLE [dbo].[PCRIX_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY7')
+   DROP TABLE [dbo].[PCRIX_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCRIX_KEY8')
+   DROP TABLE [dbo].[PCRIX_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY1')
+   DROP TABLE [dbo].[PKVAO_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY2')
+   DROP TABLE [dbo].[PKVAO_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY3')
+   DROP TABLE [dbo].[PKVAO_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY4')
+   DROP TABLE [dbo].[PKVAO_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY5')
+   DROP TABLE [dbo].[PKVAO_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY6')
+   DROP TABLE [dbo].[PKVAO_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY7')
+   DROP TABLE [dbo].[PKVAO_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKVAO_KEY8')
+   DROP TABLE [dbo].[PKVAO_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY1')
+   DROP TABLE [dbo].[PCNFO_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY2')
+   DROP TABLE [dbo].[PCNFO_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY3')
+   DROP TABLE [dbo].[PCNFO_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY4')
+   DROP TABLE [dbo].[PCNFO_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY5')
+   DROP TABLE [dbo].[PCNFO_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY6')
+   DROP TABLE [dbo].[PCNFO_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY7')
+   DROP TABLE [dbo].[PCNFO_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFO_KEY8')
+   DROP TABLE [dbo].[PCNFO_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY1')
+   DROP TABLE [dbo].[PENSS_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY2')
+   DROP TABLE [dbo].[PENSS_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY3')
+   DROP TABLE [dbo].[PENSS_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY4')
+   DROP TABLE [dbo].[PENSS_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY5')
+   DROP TABLE [dbo].[PENSS_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY6')
+   DROP TABLE [dbo].[PENSS_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY7')
+   DROP TABLE [dbo].[PENSS_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PENSS_KEY8')
+   DROP TABLE [dbo].[PENSS_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY1')
+   DROP TABLE [dbo].[PBATH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY2')
+   DROP TABLE [dbo].[PBATH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY3')
+   DROP TABLE [dbo].[PBATH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY4')
+   DROP TABLE [dbo].[PBATH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY5')
+   DROP TABLE [dbo].[PBATH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY6')
+   DROP TABLE [dbo].[PBATH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY7')
+   DROP TABLE [dbo].[PBATH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBATH_KEY8')
+   DROP TABLE [dbo].[PBATH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY1')
+   DROP TABLE [dbo].[PAGBN_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY2')
+   DROP TABLE [dbo].[PAGBN_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY3')
+   DROP TABLE [dbo].[PAGBN_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY4')
+   DROP TABLE [dbo].[PAGBN_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY5')
+   DROP TABLE [dbo].[PAGBN_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY6')
+   DROP TABLE [dbo].[PAGBN_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY7')
+   DROP TABLE [dbo].[PAGBN_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGBN_KEY8')
+   DROP TABLE [dbo].[PAGBN_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY1')
+   DROP TABLE [dbo].[PABSA_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY2')
+   DROP TABLE [dbo].[PABSA_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY3')
+   DROP TABLE [dbo].[PABSA_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY4')
+   DROP TABLE [dbo].[PABSA_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY5')
+   DROP TABLE [dbo].[PABSA_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY6')
+   DROP TABLE [dbo].[PABSA_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY7')
+   DROP TABLE [dbo].[PABSA_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSA_KEY8')
+   DROP TABLE [dbo].[PABSA_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY1')
+   DROP TABLE [dbo].[PABSC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY2')
+   DROP TABLE [dbo].[PABSC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY3')
+   DROP TABLE [dbo].[PABSC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY4')
+   DROP TABLE [dbo].[PABSC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY5')
+   DROP TABLE [dbo].[PABSC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY6')
+   DROP TABLE [dbo].[PABSC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY7')
+   DROP TABLE [dbo].[PABSC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PABSC_KEY8')
+   DROP TABLE [dbo].[PABSC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY1')
+   DROP TABLE [dbo].[PAGCV_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY2')
+   DROP TABLE [dbo].[PAGCV_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY3')
+   DROP TABLE [dbo].[PAGCV_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY4')
+   DROP TABLE [dbo].[PAGCV_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY5')
+   DROP TABLE [dbo].[PAGCV_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY6')
+   DROP TABLE [dbo].[PAGCV_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY7')
+   DROP TABLE [dbo].[PAGCV_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAGCV_KEY8')
+   DROP TABLE [dbo].[PAGCV_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY1')
+   DROP TABLE [dbo].[PCNFG_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY2')
+   DROP TABLE [dbo].[PCNFG_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY3')
+   DROP TABLE [dbo].[PCNFG_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY4')
+   DROP TABLE [dbo].[PCNFG_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY5')
+   DROP TABLE [dbo].[PCNFG_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY6')
+   DROP TABLE [dbo].[PCNFG_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY7')
+   DROP TABLE [dbo].[PCNFG_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCNFG_KEY8')
+   DROP TABLE [dbo].[PCNFG_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY1')
+   DROP TABLE [dbo].[PCLOW_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY2')
+   DROP TABLE [dbo].[PCLOW_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY3')
+   DROP TABLE [dbo].[PCLOW_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY4')
+   DROP TABLE [dbo].[PCLOW_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY5')
+   DROP TABLE [dbo].[PCLOW_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY6')
+   DROP TABLE [dbo].[PCLOW_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY7')
+   DROP TABLE [dbo].[PCLOW_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCLOW_KEY8')
+   DROP TABLE [dbo].[PCLOW_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY1')
+   DROP TABLE [dbo].[PCDTH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY2')
+   DROP TABLE [dbo].[PCDTH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY3')
+   DROP TABLE [dbo].[PCDTH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY4')
+   DROP TABLE [dbo].[PCDTH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY5')
+   DROP TABLE [dbo].[PCDTH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY6')
+   DROP TABLE [dbo].[PCDTH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY7')
+   DROP TABLE [dbo].[PCDTH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PCDTH_KEY8')
+   DROP TABLE [dbo].[PCDTH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY1')
+   DROP TABLE [dbo].[PEOBS_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY2')
+   DROP TABLE [dbo].[PEOBS_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY3')
+   DROP TABLE [dbo].[PEOBS_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY4')
+   DROP TABLE [dbo].[PEOBS_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY5')
+   DROP TABLE [dbo].[PEOBS_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY6')
+   DROP TABLE [dbo].[PEOBS_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY7')
+   DROP TABLE [dbo].[PEOBS_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEOBS_KEY8')
+   DROP TABLE [dbo].[PEOBS_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY1')
+   DROP TABLE [dbo].[PTXYD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY2')
+   DROP TABLE [dbo].[PTXYD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY3')
+   DROP TABLE [dbo].[PTXYD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY4')
+   DROP TABLE [dbo].[PTXYD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY5')
+   DROP TABLE [dbo].[PTXYD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY6')
+   DROP TABLE [dbo].[PTXYD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY7')
+   DROP TABLE [dbo].[PTXYD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTXYD_KEY8')
+   DROP TABLE [dbo].[PTXYD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY1')
+   DROP TABLE [dbo].[PTTRM_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY2')
+   DROP TABLE [dbo].[PTTRM_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY3')
+   DROP TABLE [dbo].[PTTRM_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY4')
+   DROP TABLE [dbo].[PTTRM_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY5')
+   DROP TABLE [dbo].[PTTRM_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY6')
+   DROP TABLE [dbo].[PTTRM_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY7')
+   DROP TABLE [dbo].[PTTRM_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTTRM_KEY8')
+   DROP TABLE [dbo].[PTTRM_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY1')
+   DROP TABLE [dbo].[PTRAT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY2')
+   DROP TABLE [dbo].[PTRAT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY3')
+   DROP TABLE [dbo].[PTRAT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY4')
+   DROP TABLE [dbo].[PTRAT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY5')
+   DROP TABLE [dbo].[PTRAT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY6')
+   DROP TABLE [dbo].[PTRAT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY7')
+   DROP TABLE [dbo].[PTRAT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTRAT_KEY8')
+   DROP TABLE [dbo].[PTRAT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY1')
+   DROP TABLE [dbo].[PRSBC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY2')
+   DROP TABLE [dbo].[PRSBC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY3')
+   DROP TABLE [dbo].[PRSBC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY4')
+   DROP TABLE [dbo].[PRSBC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY5')
+   DROP TABLE [dbo].[PRSBC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY6')
+   DROP TABLE [dbo].[PRSBC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY7')
+   DROP TABLE [dbo].[PRSBC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBC_KEY8')
+   DROP TABLE [dbo].[PRSBC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY1')
+   DROP TABLE [dbo].[PRSBD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY2')
+   DROP TABLE [dbo].[PRSBD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY3')
+   DROP TABLE [dbo].[PRSBD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY4')
+   DROP TABLE [dbo].[PRSBD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY5')
+   DROP TABLE [dbo].[PRSBD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY6')
+   DROP TABLE [dbo].[PRSBD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY7')
+   DROP TABLE [dbo].[PRSBD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRSBD_KEY8')
+   DROP TABLE [dbo].[PRSBD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY1')
+   DROP TABLE [dbo].[PSTMS_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY2')
+   DROP TABLE [dbo].[PSTMS_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY3')
+   DROP TABLE [dbo].[PSTMS_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY4')
+   DROP TABLE [dbo].[PSTMS_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY5')
+   DROP TABLE [dbo].[PSTMS_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY6')
+   DROP TABLE [dbo].[PSTMS_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY7')
+   DROP TABLE [dbo].[PSTMS_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMS_KEY8')
+   DROP TABLE [dbo].[PSTMS_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY1')
+   DROP TABLE [dbo].[PSTMD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY2')
+   DROP TABLE [dbo].[PSTMD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY3')
+   DROP TABLE [dbo].[PSTMD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY4')
+   DROP TABLE [dbo].[PSTMD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY5')
+   DROP TABLE [dbo].[PSTMD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY6')
+   DROP TABLE [dbo].[PSTMD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY7')
+   DROP TABLE [dbo].[PSTMD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTMD_KEY8')
+   DROP TABLE [dbo].[PSTMD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY1')
+   DROP TABLE [dbo].[PFPUI_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY2')
+   DROP TABLE [dbo].[PFPUI_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY3')
+   DROP TABLE [dbo].[PFPUI_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY4')
+   DROP TABLE [dbo].[PFPUI_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY5')
+   DROP TABLE [dbo].[PFPUI_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY6')
+   DROP TABLE [dbo].[PFPUI_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY7')
+   DROP TABLE [dbo].[PFPUI_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFPUI_KEY8')
+   DROP TABLE [dbo].[PFPUI_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY1')
+   DROP TABLE [dbo].[PINVP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY2')
+   DROP TABLE [dbo].[PINVP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY3')
+   DROP TABLE [dbo].[PINVP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY4')
+   DROP TABLE [dbo].[PINVP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY5')
+   DROP TABLE [dbo].[PINVP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY6')
+   DROP TABLE [dbo].[PINVP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY7')
+   DROP TABLE [dbo].[PINVP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINVP_KEY8')
+   DROP TABLE [dbo].[PINVP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY1')
+   DROP TABLE [dbo].[PSHPL_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY2')
+   DROP TABLE [dbo].[PSHPL_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY3')
+   DROP TABLE [dbo].[PSHPL_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY4')
+   DROP TABLE [dbo].[PSHPL_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY5')
+   DROP TABLE [dbo].[PSHPL_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY6')
+   DROP TABLE [dbo].[PSHPL_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY7')
+   DROP TABLE [dbo].[PSHPL_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHPL_KEY8')
+   DROP TABLE [dbo].[PSHPL_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY1')
+   DROP TABLE [dbo].[PSHBN_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY2')
+   DROP TABLE [dbo].[PSHBN_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY3')
+   DROP TABLE [dbo].[PSHBN_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY4')
+   DROP TABLE [dbo].[PSHBN_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY5')
+   DROP TABLE [dbo].[PSHBN_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY6')
+   DROP TABLE [dbo].[PSHBN_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY7')
+   DROP TABLE [dbo].[PSHBN_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSHBN_KEY8')
+   DROP TABLE [dbo].[PSHBN_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY1')
+   DROP TABLE [dbo].[PARCC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY2')
+   DROP TABLE [dbo].[PARCC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY3')
+   DROP TABLE [dbo].[PARCC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY4')
+   DROP TABLE [dbo].[PARCC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY5')
+   DROP TABLE [dbo].[PARCC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY6')
+   DROP TABLE [dbo].[PARCC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY7')
+   DROP TABLE [dbo].[PARCC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PARCC_KEY8')
+   DROP TABLE [dbo].[PARCC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY1')
+   DROP TABLE [dbo].[PAFFT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY2')
+   DROP TABLE [dbo].[PAFFT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY3')
+   DROP TABLE [dbo].[PAFFT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY4')
+   DROP TABLE [dbo].[PAFFT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY5')
+   DROP TABLE [dbo].[PAFFT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY6')
+   DROP TABLE [dbo].[PAFFT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY7')
+   DROP TABLE [dbo].[PAFFT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PAFFT_KEY8')
+   DROP TABLE [dbo].[PAFFT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY1')
+   DROP TABLE [dbo].[PPRMD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY2')
+   DROP TABLE [dbo].[PPRMD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY3')
+   DROP TABLE [dbo].[PPRMD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY4')
+   DROP TABLE [dbo].[PPRMD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY5')
+   DROP TABLE [dbo].[PPRMD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY6')
+   DROP TABLE [dbo].[PPRMD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY7')
+   DROP TABLE [dbo].[PPRMD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMD_KEY8')
+   DROP TABLE [dbo].[PPRMD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY1')
+   DROP TABLE [dbo].[PPRMA_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY2')
+   DROP TABLE [dbo].[PPRMA_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY3')
+   DROP TABLE [dbo].[PPRMA_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY4')
+   DROP TABLE [dbo].[PPRMA_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY5')
+   DROP TABLE [dbo].[PPRMA_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY6')
+   DROP TABLE [dbo].[PPRMA_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY7')
+   DROP TABLE [dbo].[PPRMA_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMA_KEY8')
+   DROP TABLE [dbo].[PPRMA_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY1')
+   DROP TABLE [dbo].[PPRMC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY2')
+   DROP TABLE [dbo].[PPRMC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY3')
+   DROP TABLE [dbo].[PPRMC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY4')
+   DROP TABLE [dbo].[PPRMC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY5')
+   DROP TABLE [dbo].[PPRMC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY6')
+   DROP TABLE [dbo].[PPRMC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY7')
+   DROP TABLE [dbo].[PPRMC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMC_KEY8')
+   DROP TABLE [dbo].[PPRMC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY1')
+   DROP TABLE [dbo].[PPRMP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY2')
+   DROP TABLE [dbo].[PPRMP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY3')
+   DROP TABLE [dbo].[PPRMP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY4')
+   DROP TABLE [dbo].[PPRMP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY5')
+   DROP TABLE [dbo].[PPRMP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY6')
+   DROP TABLE [dbo].[PPRMP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY7')
+   DROP TABLE [dbo].[PPRMP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMP_KEY8')
+   DROP TABLE [dbo].[PPRMP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY1')
+   DROP TABLE [dbo].[PPRMH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY2')
+   DROP TABLE [dbo].[PPRMH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY3')
+   DROP TABLE [dbo].[PPRMH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY4')
+   DROP TABLE [dbo].[PPRMH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY5')
+   DROP TABLE [dbo].[PPRMH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY6')
+   DROP TABLE [dbo].[PPRMH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY7')
+   DROP TABLE [dbo].[PPRMH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRMH_KEY8')
+   DROP TABLE [dbo].[PPRMH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY1')
+   DROP TABLE [dbo].[PPRBB_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY2')
+   DROP TABLE [dbo].[PPRBB_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY3')
+   DROP TABLE [dbo].[PPRBB_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY4')
+   DROP TABLE [dbo].[PPRBB_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY5')
+   DROP TABLE [dbo].[PPRBB_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY6')
+   DROP TABLE [dbo].[PPRBB_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY7')
+   DROP TABLE [dbo].[PPRBB_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBB_KEY8')
+   DROP TABLE [dbo].[PPRBB_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY1')
+   DROP TABLE [dbo].[PPRBH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY2')
+   DROP TABLE [dbo].[PPRBH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY3')
+   DROP TABLE [dbo].[PPRBH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY4')
+   DROP TABLE [dbo].[PPRBH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY5')
+   DROP TABLE [dbo].[PPRBH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY6')
+   DROP TABLE [dbo].[PPRBH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY7')
+   DROP TABLE [dbo].[PPRBH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRBH_KEY8')
+   DROP TABLE [dbo].[PPRBH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY1')
+   DROP TABLE [dbo].[PPRCV_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY2')
+   DROP TABLE [dbo].[PPRCV_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY3')
+   DROP TABLE [dbo].[PPRCV_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY4')
+   DROP TABLE [dbo].[PPRCV_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY5')
+   DROP TABLE [dbo].[PPRCV_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY6')
+   DROP TABLE [dbo].[PPRCV_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY7')
+   DROP TABLE [dbo].[PPRCV_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCV_KEY8')
+   DROP TABLE [dbo].[PPRCV_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY1')
+   DROP TABLE [dbo].[PPRCH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY2')
+   DROP TABLE [dbo].[PPRCH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY3')
+   DROP TABLE [dbo].[PPRCH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY4')
+   DROP TABLE [dbo].[PPRCH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY5')
+   DROP TABLE [dbo].[PPRCH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY6')
+   DROP TABLE [dbo].[PPRCH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY7')
+   DROP TABLE [dbo].[PPRCH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPRCH_KEY8')
+   DROP TABLE [dbo].[PPRCH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY1')
+   DROP TABLE [dbo].[PNBMC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY2')
+   DROP TABLE [dbo].[PNBMC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY3')
+   DROP TABLE [dbo].[PNBMC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY4')
+   DROP TABLE [dbo].[PNBMC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY5')
+   DROP TABLE [dbo].[PNBMC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY6')
+   DROP TABLE [dbo].[PNBMC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY7')
+   DROP TABLE [dbo].[PNBMC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNBMC_KEY8')
+   DROP TABLE [dbo].[PNBMC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY1')
+   DROP TABLE [dbo].[PMXAG_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY2')
+   DROP TABLE [dbo].[PMXAG_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY3')
+   DROP TABLE [dbo].[PMXAG_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY4')
+   DROP TABLE [dbo].[PMXAG_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY5')
+   DROP TABLE [dbo].[PMXAG_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY6')
+   DROP TABLE [dbo].[PMXAG_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY7')
+   DROP TABLE [dbo].[PMXAG_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMXAG_KEY8')
+   DROP TABLE [dbo].[PMXAG_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY1')
+   DROP TABLE [dbo].[PQCHG_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY2')
+   DROP TABLE [dbo].[PQCHG_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY3')
+   DROP TABLE [dbo].[PQCHG_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY4')
+   DROP TABLE [dbo].[PQCHG_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY5')
+   DROP TABLE [dbo].[PQCHG_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY6')
+   DROP TABLE [dbo].[PQCHG_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY7')
+   DROP TABLE [dbo].[PQCHG_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PQCHG_KEY8')
+   DROP TABLE [dbo].[PQCHG_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY1')
+   DROP TABLE [dbo].[PMDL1_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY2')
+   DROP TABLE [dbo].[PMDL1_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY3')
+   DROP TABLE [dbo].[PMDL1_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY4')
+   DROP TABLE [dbo].[PMDL1_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY5')
+   DROP TABLE [dbo].[PMDL1_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY6')
+   DROP TABLE [dbo].[PMDL1_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY7')
+   DROP TABLE [dbo].[PMDL1_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL1_KEY8')
+   DROP TABLE [dbo].[PMDL1_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY1')
+   DROP TABLE [dbo].[PMDL2_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY2')
+   DROP TABLE [dbo].[PMDL2_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY3')
+   DROP TABLE [dbo].[PMDL2_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY4')
+   DROP TABLE [dbo].[PMDL2_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY5')
+   DROP TABLE [dbo].[PMDL2_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY6')
+   DROP TABLE [dbo].[PMDL2_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY7')
+   DROP TABLE [dbo].[PMDL2_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL2_KEY8')
+   DROP TABLE [dbo].[PMDL2_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY1')
+   DROP TABLE [dbo].[PMDL3_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY2')
+   DROP TABLE [dbo].[PMDL3_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY3')
+   DROP TABLE [dbo].[PMDL3_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY4')
+   DROP TABLE [dbo].[PMDL3_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY5')
+   DROP TABLE [dbo].[PMDL3_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY6')
+   DROP TABLE [dbo].[PMDL3_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY7')
+   DROP TABLE [dbo].[PMDL3_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL3_KEY8')
+   DROP TABLE [dbo].[PMDL3_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY1')
+   DROP TABLE [dbo].[PMDL4_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY2')
+   DROP TABLE [dbo].[PMDL4_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY3')
+   DROP TABLE [dbo].[PMDL4_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY4')
+   DROP TABLE [dbo].[PMDL4_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY5')
+   DROP TABLE [dbo].[PMDL4_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY6')
+   DROP TABLE [dbo].[PMDL4_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY7')
+   DROP TABLE [dbo].[PMDL4_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL4_KEY8')
+   DROP TABLE [dbo].[PMDL4_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY1')
+   DROP TABLE [dbo].[PMDL5_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY2')
+   DROP TABLE [dbo].[PMDL5_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY3')
+   DROP TABLE [dbo].[PMDL5_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY4')
+   DROP TABLE [dbo].[PMDL5_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY5')
+   DROP TABLE [dbo].[PMDL5_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY6')
+   DROP TABLE [dbo].[PMDL5_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY7')
+   DROP TABLE [dbo].[PMDL5_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL5_KEY8')
+   DROP TABLE [dbo].[PMDL5_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY1')
+   DROP TABLE [dbo].[PMDL6_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY2')
+   DROP TABLE [dbo].[PMDL6_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY3')
+   DROP TABLE [dbo].[PMDL6_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY4')
+   DROP TABLE [dbo].[PMDL6_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY5')
+   DROP TABLE [dbo].[PMDL6_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY6')
+   DROP TABLE [dbo].[PMDL6_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY7')
+   DROP TABLE [dbo].[PMDL6_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL6_KEY8')
+   DROP TABLE [dbo].[PMDL6_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY1')
+   DROP TABLE [dbo].[PMDLC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY2')
+   DROP TABLE [dbo].[PMDLC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY3')
+   DROP TABLE [dbo].[PMDLC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY4')
+   DROP TABLE [dbo].[PMDLC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY5')
+   DROP TABLE [dbo].[PMDLC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY6')
+   DROP TABLE [dbo].[PMDLC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY7')
+   DROP TABLE [dbo].[PMDLC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLC_KEY8')
+   DROP TABLE [dbo].[PMDLC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY1')
+   DROP TABLE [dbo].[PIBIL_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY2')
+   DROP TABLE [dbo].[PIBIL_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY3')
+   DROP TABLE [dbo].[PIBIL_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY4')
+   DROP TABLE [dbo].[PIBIL_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY5')
+   DROP TABLE [dbo].[PIBIL_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY6')
+   DROP TABLE [dbo].[PIBIL_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY7')
+   DROP TABLE [dbo].[PIBIL_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PIBIL_KEY8')
+   DROP TABLE [dbo].[PIBIL_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY1')
+   DROP TABLE [dbo].[PGMIP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY2')
+   DROP TABLE [dbo].[PGMIP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY3')
+   DROP TABLE [dbo].[PGMIP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY4')
+   DROP TABLE [dbo].[PGMIP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY5')
+   DROP TABLE [dbo].[PGMIP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY6')
+   DROP TABLE [dbo].[PGMIP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY7')
+   DROP TABLE [dbo].[PGMIP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGMIP_KEY8')
+   DROP TABLE [dbo].[PGMIP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY1')
+   DROP TABLE [dbo].[PPPQT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY2')
+   DROP TABLE [dbo].[PPPQT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY3')
+   DROP TABLE [dbo].[PPPQT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY4')
+   DROP TABLE [dbo].[PPPQT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY5')
+   DROP TABLE [dbo].[PPPQT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY6')
+   DROP TABLE [dbo].[PPPQT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY7')
+   DROP TABLE [dbo].[PPPQT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPPQT_KEY8')
+   DROP TABLE [dbo].[PPPQT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY1')
+   DROP TABLE [dbo].[PPSCH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY2')
+   DROP TABLE [dbo].[PPSCH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY3')
+   DROP TABLE [dbo].[PPSCH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY4')
+   DROP TABLE [dbo].[PPSCH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY5')
+   DROP TABLE [dbo].[PPSCH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY6')
+   DROP TABLE [dbo].[PPSCH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY7')
+   DROP TABLE [dbo].[PPSCH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPSCH_KEY8')
+   DROP TABLE [dbo].[PPSCH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY1')
+   DROP TABLE [dbo].[PGRDC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY2')
+   DROP TABLE [dbo].[PGRDC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY3')
+   DROP TABLE [dbo].[PGRDC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY4')
+   DROP TABLE [dbo].[PGRDC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY5')
+   DROP TABLE [dbo].[PGRDC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY6')
+   DROP TABLE [dbo].[PGRDC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY7')
+   DROP TABLE [dbo].[PGRDC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDC_KEY8')
+   DROP TABLE [dbo].[PGRDC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY1')
+   DROP TABLE [dbo].[PGRDD_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY2')
+   DROP TABLE [dbo].[PGRDD_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY3')
+   DROP TABLE [dbo].[PGRDD_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY4')
+   DROP TABLE [dbo].[PGRDD_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY5')
+   DROP TABLE [dbo].[PGRDD_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY6')
+   DROP TABLE [dbo].[PGRDD_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY7')
+   DROP TABLE [dbo].[PGRDD_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGRDD_KEY8')
+   DROP TABLE [dbo].[PGRDD_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY1')
+   DROP TABLE [dbo].[PEXCH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY2')
+   DROP TABLE [dbo].[PEXCH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY3')
+   DROP TABLE [dbo].[PEXCH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY4')
+   DROP TABLE [dbo].[PEXCH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY5')
+   DROP TABLE [dbo].[PEXCH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY6')
+   DROP TABLE [dbo].[PEXCH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY7')
+   DROP TABLE [dbo].[PEXCH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PEXCH_KEY8')
+   DROP TABLE [dbo].[PEXCH_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY1')
+   DROP TABLE [dbo].[PLNKP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY2')
+   DROP TABLE [dbo].[PLNKP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY3')
+   DROP TABLE [dbo].[PLNKP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY4')
+   DROP TABLE [dbo].[PLNKP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY5')
+   DROP TABLE [dbo].[PLNKP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY6')
+   DROP TABLE [dbo].[PLNKP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY7')
+   DROP TABLE [dbo].[PLNKP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLNKP_KEY8')
+   DROP TABLE [dbo].[PLNKP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY1')
+   DROP TABLE [dbo].[PFNSR_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY2')
+   DROP TABLE [dbo].[PFNSR_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY3')
+   DROP TABLE [dbo].[PFNSR_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY4')
+   DROP TABLE [dbo].[PFNSR_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY5')
+   DROP TABLE [dbo].[PFNSR_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY6')
+   DROP TABLE [dbo].[PFNSR_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY7')
+   DROP TABLE [dbo].[PFNSR_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PFNSR_KEY8')
+   DROP TABLE [dbo].[PFNSR_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY1')
+   DROP TABLE [dbo].[PGIAR_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY2')
+   DROP TABLE [dbo].[PGIAR_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY3')
+   DROP TABLE [dbo].[PGIAR_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY4')
+   DROP TABLE [dbo].[PGIAR_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY5')
+   DROP TABLE [dbo].[PGIAR_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY6')
+   DROP TABLE [dbo].[PGIAR_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY7')
+   DROP TABLE [dbo].[PGIAR_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAR_KEY8')
+   DROP TABLE [dbo].[PGIAR_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY1')
+   DROP TABLE [dbo].[PGIAG_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY2')
+   DROP TABLE [dbo].[PGIAG_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY3')
+   DROP TABLE [dbo].[PGIAG_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY4')
+   DROP TABLE [dbo].[PGIAG_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY5')
+   DROP TABLE [dbo].[PGIAG_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY6')
+   DROP TABLE [dbo].[PGIAG_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY7')
+   DROP TABLE [dbo].[PGIAG_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAG_KEY8')
+   DROP TABLE [dbo].[PGIAG_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY1')
+   DROP TABLE [dbo].[PTNOW_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY2')
+   DROP TABLE [dbo].[PTNOW_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY3')
+   DROP TABLE [dbo].[PTNOW_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY4')
+   DROP TABLE [dbo].[PTNOW_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY5')
+   DROP TABLE [dbo].[PTNOW_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY6')
+   DROP TABLE [dbo].[PTNOW_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY7')
+   DROP TABLE [dbo].[PTNOW_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PTNOW_KEY8')
+   DROP TABLE [dbo].[PTNOW_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY1')
+   DROP TABLE [dbo].[PSTDF_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY2')
+   DROP TABLE [dbo].[PSTDF_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY3')
+   DROP TABLE [dbo].[PSTDF_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY4')
+   DROP TABLE [dbo].[PSTDF_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY5')
+   DROP TABLE [dbo].[PSTDF_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY6')
+   DROP TABLE [dbo].[PSTDF_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY7')
+   DROP TABLE [dbo].[PSTDF_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PSTDF_KEY8')
+   DROP TABLE [dbo].[PSTDF_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY1')
+   DROP TABLE [dbo].[PGIAP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY2')
+   DROP TABLE [dbo].[PGIAP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY3')
+   DROP TABLE [dbo].[PGIAP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY4')
+   DROP TABLE [dbo].[PGIAP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY5')
+   DROP TABLE [dbo].[PGIAP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY6')
+   DROP TABLE [dbo].[PGIAP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY7')
+   DROP TABLE [dbo].[PGIAP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PGIAP_KEY8')
+   DROP TABLE [dbo].[PGIAP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY1')
+   DROP TABLE [dbo].[PMDLP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY2')
+   DROP TABLE [dbo].[PMDLP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY3')
+   DROP TABLE [dbo].[PMDLP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY4')
+   DROP TABLE [dbo].[PMDLP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY5')
+   DROP TABLE [dbo].[PMDLP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY6')
+   DROP TABLE [dbo].[PMDLP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY7')
+   DROP TABLE [dbo].[PMDLP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLP_KEY8')
+   DROP TABLE [dbo].[PMDLP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY1')
+   DROP TABLE [dbo].[PMDLM_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY2')
+   DROP TABLE [dbo].[PMDLM_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY3')
+   DROP TABLE [dbo].[PMDLM_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY4')
+   DROP TABLE [dbo].[PMDLM_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY5')
+   DROP TABLE [dbo].[PMDLM_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY6')
+   DROP TABLE [dbo].[PMDLM_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY7')
+   DROP TABLE [dbo].[PMDLM_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLM_KEY8')
+   DROP TABLE [dbo].[PMDLM_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY1')
+   DROP TABLE [dbo].[PWDAC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY2')
+   DROP TABLE [dbo].[PWDAC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY3')
+   DROP TABLE [dbo].[PWDAC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY4')
+   DROP TABLE [dbo].[PWDAC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY5')
+   DROP TABLE [dbo].[PWDAC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY6')
+   DROP TABLE [dbo].[PWDAC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY7')
+   DROP TABLE [dbo].[PWDAC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PWDAC_KEY8')
+   DROP TABLE [dbo].[PWDAC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY1')
+   DROP TABLE [dbo].[PMDLA_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY2')
+   DROP TABLE [dbo].[PMDLA_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY3')
+   DROP TABLE [dbo].[PMDLA_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY4')
+   DROP TABLE [dbo].[PMDLA_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY5')
+   DROP TABLE [dbo].[PMDLA_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY6')
+   DROP TABLE [dbo].[PMDLA_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY7')
+   DROP TABLE [dbo].[PMDLA_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLA_KEY8')
+   DROP TABLE [dbo].[PMDLA_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY1')
+   DROP TABLE [dbo].[PPFMA_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY2')
+   DROP TABLE [dbo].[PPFMA_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY3')
+   DROP TABLE [dbo].[PPFMA_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY4')
+   DROP TABLE [dbo].[PPFMA_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY5')
+   DROP TABLE [dbo].[PPFMA_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY6')
+   DROP TABLE [dbo].[PPFMA_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY7')
+   DROP TABLE [dbo].[PPFMA_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMA_KEY8')
+   DROP TABLE [dbo].[PPFMA_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY1')
+   DROP TABLE [dbo].[PPFMP_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY2')
+   DROP TABLE [dbo].[PPFMP_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY3')
+   DROP TABLE [dbo].[PPFMP_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY4')
+   DROP TABLE [dbo].[PPFMP_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY5')
+   DROP TABLE [dbo].[PPFMP_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY6')
+   DROP TABLE [dbo].[PPFMP_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY7')
+   DROP TABLE [dbo].[PPFMP_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPFMP_KEY8')
+   DROP TABLE [dbo].[PPFMP_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY1')
+   DROP TABLE [dbo].[PMDL7_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY2')
+   DROP TABLE [dbo].[PMDL7_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY3')
+   DROP TABLE [dbo].[PMDL7_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY4')
+   DROP TABLE [dbo].[PMDL7_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY5')
+   DROP TABLE [dbo].[PMDL7_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY6')
+   DROP TABLE [dbo].[PMDL7_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY7')
+   DROP TABLE [dbo].[PMDL7_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL7_KEY8')
+   DROP TABLE [dbo].[PMDL7_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY1')
+   DROP TABLE [dbo].[PMDL8_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY2')
+   DROP TABLE [dbo].[PMDL8_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY3')
+   DROP TABLE [dbo].[PMDL8_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY4')
+   DROP TABLE [dbo].[PMDL8_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY5')
+   DROP TABLE [dbo].[PMDL8_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY6')
+   DROP TABLE [dbo].[PMDL8_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY7')
+   DROP TABLE [dbo].[PMDL8_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL8_KEY8')
+   DROP TABLE [dbo].[PMDL8_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY1')
+   DROP TABLE [dbo].[PMDL9_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY2')
+   DROP TABLE [dbo].[PMDL9_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY3')
+   DROP TABLE [dbo].[PMDL9_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY4')
+   DROP TABLE [dbo].[PMDL9_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY5')
+   DROP TABLE [dbo].[PMDL9_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY6')
+   DROP TABLE [dbo].[PMDL9_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY7')
+   DROP TABLE [dbo].[PMDL9_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDL9_KEY8')
+   DROP TABLE [dbo].[PMDL9_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY1')
+   DROP TABLE [dbo].[PINDU_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY2')
+   DROP TABLE [dbo].[PINDU_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY3')
+   DROP TABLE [dbo].[PINDU_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY4')
+   DROP TABLE [dbo].[PINDU_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY5')
+   DROP TABLE [dbo].[PINDU_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY6')
+   DROP TABLE [dbo].[PINDU_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY7')
+   DROP TABLE [dbo].[PINDU_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PINDU_KEY8')
+   DROP TABLE [dbo].[PINDU_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY1')
+   DROP TABLE [dbo].[PMDLB_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY2')
+   DROP TABLE [dbo].[PMDLB_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY3')
+   DROP TABLE [dbo].[PMDLB_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY4')
+   DROP TABLE [dbo].[PMDLB_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY5')
+   DROP TABLE [dbo].[PMDLB_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY6')
+   DROP TABLE [dbo].[PMDLB_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY7')
+   DROP TABLE [dbo].[PMDLB_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMDLB_KEY8')
+   DROP TABLE [dbo].[PMDLB_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY1')
+   DROP TABLE [dbo].[PHYBT_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY2')
+   DROP TABLE [dbo].[PHYBT_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY3')
+   DROP TABLE [dbo].[PHYBT_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY4')
+   DROP TABLE [dbo].[PHYBT_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY5')
+   DROP TABLE [dbo].[PHYBT_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY6')
+   DROP TABLE [dbo].[PHYBT_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY7')
+   DROP TABLE [dbo].[PHYBT_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PHYBT_KEY8')
+   DROP TABLE [dbo].[PHYBT_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY1')
+   DROP TABLE [dbo].[PKRCH_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY2')
+   DROP TABLE [dbo].[PKRCH_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY3')
+   DROP TABLE [dbo].[PKRCH_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY4')
+   DROP TABLE [dbo].[PKRCH_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY5')
+   DROP TABLE [dbo].[PKRCH_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY6')
+   DROP TABLE [dbo].[PKRCH_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY7')
+   DROP TABLE [dbo].[PKRCH_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PKRCH_KEY8')
+   DROP TABLE [dbo].[PKRCH_KEY8]
+   
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY1')
+   DROP TABLE [dbo].[PADDR_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY2')
+   DROP TABLE [dbo].[PADDR_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY3')
+   DROP TABLE [dbo].[PADDR_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY4')
+   DROP TABLE [dbo].[PADDR_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY5')
+   DROP TABLE [dbo].[PADDR_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY6')
+   DROP TABLE [dbo].[PADDR_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY7')
+   DROP TABLE [dbo].[PADDR_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PADDR_KEY8')
+   DROP TABLE [dbo].[PADDR_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY1')
+   DROP TABLE [dbo].[PBILL_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY2')
+   DROP TABLE [dbo].[PBILL_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY3')
+   DROP TABLE [dbo].[PBILL_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY4')
+   DROP TABLE [dbo].[PBILL_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY5')
+   DROP TABLE [dbo].[PBILL_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY6')
+   DROP TABLE [dbo].[PBILL_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY7')
+   DROP TABLE [dbo].[PBILL_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PBILL_KEY8')
+   DROP TABLE [dbo].[PBILL_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY1')
+   DROP TABLE [dbo].[PLHST_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY2')
+   DROP TABLE [dbo].[PLHST_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY3')
+   DROP TABLE [dbo].[PLHST_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY4')
+   DROP TABLE [dbo].[PLHST_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY5')
+   DROP TABLE [dbo].[PLHST_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY6')
+   DROP TABLE [dbo].[PLHST_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY7')
+   DROP TABLE [dbo].[PLHST_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PLHST_KEY8')
+   DROP TABLE [dbo].[PLHST_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY1')
+   DROP TABLE [dbo].[PMESC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY2')
+   DROP TABLE [dbo].[PMESC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY3')
+   DROP TABLE [dbo].[PMESC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY4')
+   DROP TABLE [dbo].[PMESC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY5')
+   DROP TABLE [dbo].[PMESC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY6')
+   DROP TABLE [dbo].[PMESC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY7')
+   DROP TABLE [dbo].[PMESC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PMESC_KEY8')
+   DROP TABLE [dbo].[PMESC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY1')
+   DROP TABLE [dbo].[PNALK_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY2')
+   DROP TABLE [dbo].[PNALK_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY3')
+   DROP TABLE [dbo].[PNALK_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY4')
+   DROP TABLE [dbo].[PNALK_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY5')
+   DROP TABLE [dbo].[PNALK_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY6')
+   DROP TABLE [dbo].[PNALK_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY7')
+   DROP TABLE [dbo].[PNALK_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PNALK_KEY8')
+   DROP TABLE [dbo].[PNALK_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY1')
+   DROP TABLE [dbo].[PPOLC_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY2')
+   DROP TABLE [dbo].[PPOLC_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY3')
+   DROP TABLE [dbo].[PPOLC_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY4')
+   DROP TABLE [dbo].[PPOLC_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY5')
+   DROP TABLE [dbo].[PPOLC_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY6')
+   DROP TABLE [dbo].[PPOLC_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY7')
+   DROP TABLE [dbo].[PPOLC_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPOLC_KEY8')
+   DROP TABLE [dbo].[PPOLC_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY1')
+   DROP TABLE [dbo].[PPYAS_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY2')
+   DROP TABLE [dbo].[PPYAS_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY3')
+   DROP TABLE [dbo].[PPYAS_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY4')
+   DROP TABLE [dbo].[PPYAS_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY5')
+   DROP TABLE [dbo].[PPYAS_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY6')
+   DROP TABLE [dbo].[PPYAS_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY7')
+   DROP TABLE [dbo].[PPYAS_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PPYAS_KEY8')
+   DROP TABLE [dbo].[PPYAS_KEY8]
+
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY1')
+   DROP TABLE [dbo].[PRULE_KEY1]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY2')
+   DROP TABLE [dbo].[PRULE_KEY2]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY3')
+   DROP TABLE [dbo].[PRULE_KEY3]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY4')
+   DROP TABLE [dbo].[PRULE_KEY4]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY5')
+   DROP TABLE [dbo].[PRULE_KEY5]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY6')
+   DROP TABLE [dbo].[PRULE_KEY6]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY7')
+   DROP TABLE [dbo].[PRULE_KEY7]
+IF EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'dbo' AND table_name = 'PRULE_KEY8')
+   DROP TABLE [dbo].[PRULE_KEY8]
